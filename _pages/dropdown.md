@@ -7,6 +7,6 @@ children:
     - title: publications
       permalink: /publications/
     - title: divider
-    - title: projects
-      permalink: /projects/
+    - title: curriculum vitae
+      permalink: /cv/
 ---
