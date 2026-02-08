@@ -1,12 +1,12 @@
 ---
 ---
 
-@article{ng2021ninjadesc,
+@inproceedings{ng2021ninjadesc,
       abbr={CVPR},
       author={Tony Ng and Hyo Jin Kim and Vincent Lee and Daniel DeTone and Tsun-Yi Yang and Tianwei Shen and Eddy Ilg and Vassileios Balntas and Krystian Mikolajczyk and Chris Sweeney},
       title={{NinjaDesc}: Content-Concealing Visual Descriptors via Adversarial Learning}, 
       year={2022},
-      journal={CVPR},
+      booktitle={CVPR},
       abstract={In the light of recent analyses on privacy-concerning scene revelation from visual descriptors, we develop descriptors that conceal the input image content. In particular, we propose an adversarial learning framework for training visual descriptors that prevent image reconstruction, while maintaining the matching accuracy. We let a feature encoding network and image reconstruction network compete with each other, such that the feature encoder tries to impede the image reconstruction with its generated descriptors, while the reconstructor tries to recover the input image from the descriptors. The experimental results demonstrate that the visual descriptors obtained with our method significantly deteriorate the image reconstruction quality with minimal impact on correspondence matching and camera localization performance.},
       arxiv={2112.12785},
       selected={true},
@@ -55,4 +55,38 @@
       abstract={In this paper, we present a novel approach that exploits the information within the descriptor space to propose keypoint locations. Detect then describe, or detect and describe jointly are two typical strategies for extracting local descriptors. In contrast, we propose an approach that inverts this process by first describing and then detecting the keypoint locations. % Describe-to-Detect (D2D) leverages successful descriptor models without the need for any additional training. Our method selects keypoints as salient locations with high information content which is defined by the descriptors rather than some independent operators. We perform experiments on multiple benchmarks including image matching, camera localisation, and 3D reconstruction. The results indicate that our method improves the matching performance of various descriptors and that it generalises across methods and tasks.},
       arxiv={2005.13605},
       year      = {2020},
+}
+
+@inproceedings{ng2022oodpose,
+      abbr={3DV},
+      author={Tony Ng and Adrian Lopez-Rodriguez and Vassileios Balntas and Krystian Mikolajczyk},
+      title={{OoD-Pose}: Camera Pose Regression from Out-of-Distribution Synthetic Views},
+      booktitle={2022 International Conference on 3D Vision (3DV)},
+      year={2022},
+}
+
+@article{nazarczuk2022samplehd,
+      abbr={arXiv},
+      author={M Nazarczuk and Tony Ng and Krystian Mikolajczyk},
+      title={{SAMPLE-HD}: Simultaneous Action and Motion Planning Learning Environment},
+      journal={arXiv preprint},
+      arxiv={2206.10312},
+      year={2022},
+}
+
+@misc{kim2023arvrpatent,
+      abbr={Patent},
+      author={Hyo Jin Kim and Tony Ng and Vincent Lee and F E R Ilg and S El Ghazzal and Z Wang and Z Wang and P K Huang},
+      title={Systems and Methods for Providing User Experiences on AR/VR Systems},
+      howpublished={US Patent App. 18/305,073},
+      year={2023},
+}
+
+@article{liu2025tuna,
+      abbr={arXiv},
+      author={Z Liu and W Ren and H Liu and Z Zhou and S Chen and H Qiu and X Huang and Z An and F Yang and others},
+      title={{TUNA}: Taming Unified Visual Representations for Native Unified Multimodal Models},
+      journal={arXiv preprint},
+      arxiv={2512.02014},
+      year={2025},
 }

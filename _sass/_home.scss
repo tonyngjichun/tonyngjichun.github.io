@@ -105,6 +105,31 @@
   }
 }
 
+html[data-theme='dark'] {
+  .home {
+    .home-hero {
+      background: radial-gradient(120% 120% at 5% 0%, rgba(246, 161, 73, 0.18) 0%, rgba(9, 17, 26, 0.9) 45%, rgba(9, 17, 26, 1) 100%);
+      border-color: rgba(244, 239, 231, 0.2);
+    }
+
+    .home-card {
+      background: #101a24;
+      border-color: rgba(244, 239, 231, 0.15);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .home-cta-btn {
+      border-color: #f4efe7;
+      color: #f4efe7;
+    }
+
+    .home-cta-btn.primary {
+      color: #09111a;
+      box-shadow: 0 10px 30px rgba(246, 161, 73, 0.4);
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .home {
     .home-hero {

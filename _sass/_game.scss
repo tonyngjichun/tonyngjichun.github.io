@@ -22,9 +22,9 @@
 
 .game-controls {
   margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: auto minmax(180px, 1fr) auto;
+  gap: 0.75rem 1.25rem;
   align-items: center;
   color: var(--global-text-color-light);
 }
@@ -32,4 +32,32 @@
 .game-slider {
   width: 100%;
   max-width: 320px;
+}
+
+.game-control-upload {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+html[data-theme='dark'] {
+  .game-wrapper {
+    background: #101a24;
+    border-color: rgba(244, 239, 231, 0.15);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  }
+
+  .game-canvas {
+    border-color: rgba(244, 239, 231, 0.2);
+  }
+
+  .game-controls {
+    color: #c2b9ad;
+  }
+
+  .game-controls input,
+  .game-controls label {
+    color: #f4efe7;
+  }
 }

@@ -101,3 +101,25 @@
     border: none;
   }
 }
+
+html[data-theme='dark'] {
+  .cv-hero,
+  .cv-section {
+    background: #101a24;
+    border-color: rgba(244, 239, 231, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .cv-actions a {
+    border-color: #f4efe7;
+    color: #f4efe7;
+  }
+
+  .cv-actions a.primary {
+    color: #09111a;
+  }
+
+  .cv-embed {
+    border-color: rgba(244, 239, 231, 0.2);
+  }
+}
