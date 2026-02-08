@@ -1,10 +1,9 @@
 ---
 layout: page
-title: play
+title: Diffusion Toy
 permalink: /play/
 description: A playful diffusion-inspired canvas that denoises on hover and re-noises on scroll.
-nav: true
-nav_order: 4
+nav: false
 ---
 
 <section class="game-wrapper">
