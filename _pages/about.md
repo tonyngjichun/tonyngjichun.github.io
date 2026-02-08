@@ -15,7 +15,7 @@ hero:
       primary: true
     - label: Publications
       url: /publications/
-    - label: Fun Corner
+    - label: fun corner
       url: /play/
 
 profile:
