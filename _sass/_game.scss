@@ -41,6 +41,42 @@
   align-items: center;
 }
 
+.game-controls button,
+.game-controls input[type="file"]::file-selector-button {
+  border: 1px solid var(--global-text-color);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--global-text-color);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-controls button:hover,
+.game-controls input[type="file"]::file-selector-button:hover {
+  transform: translateY(-1px);
+}
+
+.game-controls button {
+  background: var(--global-theme-color);
+  border-color: var(--global-theme-color);
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(246, 161, 73, 0.3);
+}
+
+html[data-theme='dark'] {
+  .game-controls button,
+  .game-controls input[type="file"]::file-selector-button {
+    border-color: #f4efe7;
+    color: #f4efe7;
+  }
+
+  .game-controls button {
+    color: #09111a;
+  }
+}
+
 html[data-theme='dark'] {
   .game-wrapper {
     background: #101a24;

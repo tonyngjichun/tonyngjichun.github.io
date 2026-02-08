@@ -9,6 +9,7 @@
   const slider = document.getElementById("noiseSlider");
   const noiseValue = document.getElementById("noiseValue");
   const imageUpload = document.getElementById("imageUpload");
+  const resetNoise = document.getElementById("resetNoise");
 
   const baseCanvas = document.createElement("canvas");
   baseCanvas.width = width;
@@ -19,6 +20,20 @@
   noiseCanvas.width = width;
   noiseCanvas.height = height;
   const noiseCtx = noiseCanvas.getContext("2d");
+
+  const noisyCanvas = document.createElement("canvas");
+  noisyCanvas.width = width;
+  noisyCanvas.height = height;
+  const noisyCtx = noisyCanvas.getContext("2d");
+
+  const denoiseCanvas = document.createElement("canvas");
+  denoiseCanvas.width = width;
+  denoiseCanvas.height = height;
+  const denoiseCtx = denoiseCanvas.getContext("2d");
+  const progressCanvas = document.createElement("canvas");
+  progressCanvas.width = width;
+  progressCanvas.height = height;
+  const progressCtx = progressCanvas.getContext("2d");
 
   let noiseLevel = 0.35;
   let targetNoise = 0.35;
@@ -33,8 +48,13 @@
     down: false,
     denoise: 0
   };
-  let wobblePhase = 0;
-  let lastAngle = 0;
+  let smoothSpeed = 0;
+  let dir = { x: 1, y: 0 };
+  let smoothStretch = 1;
+  let smoothAccel = { x: 0, y: 0 };
+  let prevVel = { x: 0, y: 0 };
+  let lastTarget = { x: width / 2, y: height / 2 };
+  let brushProgress = 0;
 
   const generateBase = () => {
     const gradient = baseCtx.createLinearGradient(0, 0, width, height);
@@ -54,6 +74,7 @@
       baseCtx.ellipse(x, y, radius, radius * (0.5 + Math.random()), Math.random(), 0, Math.PI * 2);
       baseCtx.fill();
     }
+    progressCtx.clearRect(0, 0, width, height);
   };
 
   const drawUploadedImage = (img) => {
@@ -74,6 +95,7 @@
 
     baseCtx.clearRect(0, 0, width, height);
     baseCtx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+    progressCtx.clearRect(0, 0, width, height);
   };
 
   const generateNoise = () => {
@@ -89,22 +111,37 @@
     noiseCtx.putImageData(imageData, 0, 0);
   };
 
+  let noiseFrame = 0;
   const render = () => {
     noiseLevel += (targetNoise - noiseLevel) * 0.06;
 
-    const dx = pointer.targetX - pointer.x;
-    const dy = pointer.targetY - pointer.y;
-    pointer.vx = pointer.vx * 0.75 + dx * 0.18;
-    pointer.vy = pointer.vy * 0.75 + dy * 0.18;
-    pointer.x += pointer.vx;
-    pointer.y += pointer.vy;
+    // Keep brush centered exactly on cursor.
+    pointer.x = pointer.targetX;
+    pointer.y = pointer.targetY;
+
+    const dx = pointer.targetX - lastTarget.x;
+    const dy = pointer.targetY - lastTarget.y;
+    lastTarget = { x: pointer.targetX, y: pointer.targetY };
+    pointer.vx = pointer.vx * 0.5 + dx * 0.5;
+    pointer.vy = pointer.vy * 0.5 + dy * 0.5;
 
     const speed = Math.min(20, Math.hypot(pointer.vx, pointer.vy));
-    const wobbleSpeed = speed < 1 ? 0 : 0.002;
-    wobblePhase += wobbleSpeed;
-    if (speed >= 1) {
-      lastAngle = Math.atan2(pointer.vy, pointer.vx);
+    smoothSpeed = smoothSpeed * 0.9 + speed * 0.1;
+
+    if (speed > 0.5) {
+      const nx = pointer.vx / speed;
+      const ny = pointer.vy / speed;
+      dir.x = dir.x * 0.85 + nx * 0.15;
+      dir.y = dir.y * 0.85 + ny * 0.15;
+      const dlen = Math.hypot(dir.x, dir.y) || 1;
+      dir.x /= dlen;
+      dir.y /= dlen;
     }
+    const ax = pointer.vx - prevVel.x;
+    const ay = pointer.vy - prevVel.y;
+    prevVel = { x: pointer.vx, y: pointer.vy };
+    smoothAccel.x = smoothAccel.x * 0.8 + ax * 0.2;
+    smoothAccel.y = smoothAccel.y * 0.8 + ay * 0.2;
 
     if (pointer.down) {
       pointer.denoise = Math.min(1, pointer.denoise + 0.02);
@@ -113,13 +150,105 @@
     }
 
     ctx.clearRect(0, 0, width, height);
-    ctx.drawImage(baseCanvas, 0, 0);
-    ctx.globalAlpha = noiseLevel;
-    ctx.drawImage(noiseCanvas, 0, 0);
-    ctx.globalAlpha = 1;
+    noiseFrame = (noiseFrame + 1) % 3;
+    if (noiseFrame === 0) {
+      generateNoise();
+    }
+
+    noisyCtx.clearRect(0, 0, width, height);
+    noisyCtx.drawImage(baseCanvas, 0, 0);
+    noisyCtx.globalAlpha = noiseLevel;
+    noisyCtx.drawImage(noiseCanvas, 0, 0);
+    noisyCtx.globalAlpha = 1;
+
+    let brushPath = null;
+    let brushRadius = 0;
+    let brushAngle = 0;
+
+    if (pointer.down || pointer.denoise > 0.01) {
+      brushRadius = (42 + smoothSpeed * 0.08) * 1.5 * 1.2;
+      const targetStretch = 1 + Math.min(0.18, smoothSpeed * 0.015);
+      smoothStretch = smoothStretch * 0.97 + targetStretch * 0.03;
+      const stretch = smoothStretch;
+      brushAngle = Math.atan2(dir.y, dir.x);
+      const accelAngle = Math.atan2(smoothAccel.y, smoothAccel.x);
+      const accelMag = Math.min(6, Math.hypot(smoothAccel.x, smoothAccel.y));
+
+      const points = 36;
+      const velBias = Math.min(0.28, smoothSpeed * 0.025);
+      const accBias = Math.min(0.24, accelMag * 0.04);
+      const turnSign = Math.sign(dir.x * smoothAccel.y - dir.y * smoothAccel.x) || 1;
+      const sideBias = Math.min(0.14, accelMag * 0.025) * turnSign;
+      const major = brushRadius * stretch;
+      const minor = brushRadius * (1 - Math.min(0.18, smoothSpeed * 0.015));
+
+      const path = new Path2D();
+      for (let i = 0; i <= points; i += 1) {
+        const t = (i / points) * Math.PI * 2;
+        const r =
+          (major * minor) /
+          Math.sqrt((minor * Math.cos(t)) ** 2 + (major * Math.sin(t)) ** 2);
+        const accelPhase = accelAngle - brushAngle;
+        const forward = Math.max(0, Math.cos(t));
+        const backward = Math.max(0, -Math.cos(t));
+        const accForward = Math.max(0, Math.cos(t - accelPhase));
+        const bumpVel = velBias * Math.pow(forward, 2.2) - velBias * 0.35 * Math.pow(backward, 1.6);
+        const bumpAcc = accBias * Math.pow(accForward, 2.0);
+        const bumpSide = sideBias * Math.sin(t);
+        const finalR = r * (1 + bumpVel + bumpAcc + bumpSide);
+        const localX = Math.cos(t) * finalR;
+        const localY = Math.sin(t) * finalR;
+        const px = pointer.x + localX * Math.cos(brushAngle) - localY * Math.sin(brushAngle);
+        const py = pointer.y + localX * Math.sin(brushAngle) + localY * Math.cos(brushAngle);
+        if (i === 0) {
+          path.moveTo(px, py);
+        } else {
+          path.lineTo(px, py);
+        }
+      }
+      path.closePath();
+      brushPath = path;
+    }
+
+    if (pointer.down && brushPath) {
+      progressCtx.save();
+      progressCtx.globalAlpha = 0.08;
+      progressCtx.fillStyle = "rgba(255, 255, 255, 1)";
+      progressCtx.fill(brushPath);
+      progressCtx.restore();
+    }
+
+    if (brushPath) {
+      const boxSize = Math.max(10, Math.floor(brushRadius * 1.8));
+      const bx = Math.max(0, Math.floor(pointer.x - boxSize / 2));
+      const by = Math.max(0, Math.floor(pointer.y - boxSize / 2));
+      const bw = Math.min(width - bx, boxSize);
+      const bh = Math.min(height - by, boxSize);
+      if (bw > 0 && bh > 0) {
+        const data = progressCtx.getImageData(bx, by, bw, bh).data;
+        let sum = 0;
+        for (let i = 3; i < data.length; i += 4) {
+          sum += data[i];
+        }
+        brushProgress = sum / (255 * (data.length / 4));
+      } else {
+        brushProgress = 0;
+      }
+    } else {
+      brushProgress = 0;
+    }
+
+    denoiseCtx.clearRect(0, 0, width, height);
+    denoiseCtx.drawImage(baseCanvas, 0, 0);
+    denoiseCtx.globalCompositeOperation = "destination-in";
+    denoiseCtx.drawImage(progressCanvas, 0, 0);
+    denoiseCtx.globalCompositeOperation = "source-over";
+
+    ctx.drawImage(noisyCanvas, 0, 0);
+    ctx.drawImage(denoiseCanvas, 0, 0);
 
     if (pointer.active) {
-      const prompt = "Click and hold to denoise";
+      const prompt = "Click and hold to clean";
       ctx.save();
       ctx.font = "600 16px 'Space Grotesk', sans-serif";
       ctx.fillStyle = "rgba(244, 239, 231, 0.9)";
@@ -131,59 +260,28 @@
       const textY = Math.max(24, pointer.y - 18);
       ctx.strokeText(prompt, textX, textY);
       ctx.fillText(prompt, textX, textY);
+      const barWidth = 180;
+      const barHeight = 6;
+      const barX = textX;
+      const barY = textY + 16;
+      ctx.fillStyle = "rgba(9, 17, 26, 0.5)";
+      ctx.fillRect(barX, barY, barWidth, barHeight);
+      ctx.fillStyle = "rgba(246, 161, 73, 0.9)";
+      ctx.fillRect(barX, barY, barWidth * brushProgress, barHeight);
       ctx.restore();
     }
 
-    if (pointer.down || pointer.denoise > 0.01) {
-      const baseRadius = 80 + speed * 0.5;
-      const wobble = speed < 1 ? 0 : Math.min(0.04, 0.006 + speed * 0.002);
-      const points = 24;
-      const angle = speed < 1 ? lastAngle : Math.atan2(pointer.vy, pointer.vx);
-      const stretch = 1 + Math.min(0.18, speed * 0.018);
-
-      const pts = [];
-      for (let i = 0; i < points; i += 1) {
-        const t = (i / points) * Math.PI * 2;
-        const localStretch = 1 + stretch * Math.cos(t - angle) * 0.6;
-        const r = baseRadius * localStretch;
-        const wob = 1 + wobble * Math.sin(t * 2 + wobblePhase);
-        const finalR = r * wob;
-        pts.push({
-          x: pointer.x + Math.cos(t) * finalR,
-          y: pointer.y + Math.sin(t) * finalR
-        });
-      }
-
-      ctx.save();
-      ctx.beginPath();
-      for (let i = 0; i < pts.length; i += 1) {
-        const p0 = pts[i];
-        const p1 = pts[(i + 1) % pts.length];
-        const midX = (p0.x + p1.x) / 2;
-        const midY = (p0.y + p1.y) / 2;
-        if (i === 0) {
-          ctx.moveTo(midX, midY);
-        } else {
-          ctx.quadraticCurveTo(p0.x, p0.y, midX, midY);
-        }
-      }
-      ctx.closePath();
-      ctx.clip();
-      ctx.globalAlpha = pointer.denoise;
-      ctx.drawImage(baseCanvas, 0, 0);
-      ctx.globalAlpha = 1;
-      ctx.restore();
-
-      const glow = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, baseRadius * 1.2);
+    if (brushPath) {
+      const glow = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, brushRadius * 1.1);
       glow.addColorStop(0, `rgba(246, 161, 73, ${0.2 + pointer.denoise * 0.35})`);
       glow.addColorStop(1, "rgba(246, 161, 73, 0)");
-    ctx.globalCompositeOperation = "screen";
-    ctx.fillStyle = glow;
-    ctx.beginPath();
-    ctx.arc(pointer.x, pointer.y, baseRadius * 1.2, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.globalCompositeOperation = "source-over";
-  }
+      ctx.globalCompositeOperation = "screen";
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(pointer.x, pointer.y, brushRadius * 1.1, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalCompositeOperation = "source-over";
+    }
 
     requestAnimationFrame(render);
   };
@@ -240,6 +338,13 @@
     pointer.down = false;
     canvas.releasePointerCapture(event.pointerId);
   };
+
+  if (resetNoise) {
+    resetNoise.addEventListener("click", () => {
+      progressCtx.clearRect(0, 0, width, height);
+      pointer.denoise = 0;
+    });
+  }
 
   canvas.addEventListener("wheel", handleScroll, { passive: true });
   canvas.addEventListener("pointermove", handlePointerMove);
