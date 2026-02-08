@@ -5,8 +5,8 @@ nav: true
 nav_order: 4
 dropdown: true
 children: 
-    - title: Diffusion Toy
+    - title: diffusion toy
       permalink: /play/
-    - title: Wake Vortex
+    - title: wake vortex
       permalink: /wake-vortex/
 ---
