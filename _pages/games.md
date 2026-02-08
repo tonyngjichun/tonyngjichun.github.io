@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Flight Deck
+title: Fun Corner
 nav: true
 nav_order: 4
 dropdown: true

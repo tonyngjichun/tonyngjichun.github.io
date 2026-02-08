@@ -15,7 +15,7 @@ hero:
       primary: true
     - label: Publications
       url: /publications/
-    - label: Flight Deck
+    - label: Fun Corner
       url: /play/
 
 profile:
