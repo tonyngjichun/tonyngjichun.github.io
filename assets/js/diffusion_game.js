@@ -21,6 +21,11 @@
   noiseCanvas.height = height;
   const noiseCtx = noiseCanvas.getContext("2d");
 
+  const smoothNoiseCanvas = document.createElement("canvas");
+  smoothNoiseCanvas.width = width;
+  smoothNoiseCanvas.height = height;
+  const smoothNoiseCtx = smoothNoiseCanvas.getContext("2d");
+
   const noisyCanvas = document.createElement("canvas");
   noisyCanvas.width = width;
   noisyCanvas.height = height;
@@ -150,15 +155,20 @@
     }
 
     ctx.clearRect(0, 0, width, height);
-    noiseFrame = (noiseFrame + 1) % 3;
+    noiseFrame = (noiseFrame + 1) % 1;
     if (noiseFrame === 0) {
       generateNoise();
+      smoothNoiseCtx.globalAlpha = 0.78;
+      smoothNoiseCtx.drawImage(smoothNoiseCanvas, 0, 0);
+      smoothNoiseCtx.globalAlpha = 0.22;
+      smoothNoiseCtx.drawImage(noiseCanvas, 0, 0);
+      smoothNoiseCtx.globalAlpha = 1;
     }
 
     noisyCtx.clearRect(0, 0, width, height);
     noisyCtx.drawImage(baseCanvas, 0, 0);
     noisyCtx.globalAlpha = noiseLevel;
-    noisyCtx.drawImage(noiseCanvas, 0, 0);
+    noisyCtx.drawImage(smoothNoiseCanvas, 0, 0);
     noisyCtx.globalAlpha = 1;
 
     let brushPath = null;
@@ -212,7 +222,8 @@
 
     if (pointer.down && brushPath) {
       progressCtx.save();
-      progressCtx.globalAlpha = 0.08;
+      progressCtx.globalCompositeOperation = "lighter";
+      progressCtx.globalAlpha = 0.2;
       progressCtx.fillStyle = "rgba(255, 255, 255, 1)";
       progressCtx.fill(brushPath);
       progressCtx.restore();
