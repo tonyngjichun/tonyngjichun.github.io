@@ -2,7 +2,7 @@
 layout: home
 title: about
 permalink: /
-description: AI Research Scientist at Meta. PhD at <a href="https://www.imperial.ac.uk/matchlab/">MatchLab, Imperial College London</a>. Ex-<a href="https://about.facebook.com/realitylabs">Reality Labs, Meta</a> & Scape Technologies.
+description: AI Research Scientist at Meta. PhD at <a href="https://www.imperial.ac.uk/matchlab/">MatchLab, Imperial College London</a>. Ex-Synthesia & Scape Technologies.
 nav_order: 1
 
 hero:
