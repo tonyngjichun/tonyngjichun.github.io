@@ -1,0 +1,128 @@
+summary: >
+  Scientist at Meta AI Research with a PhD in Electrical and Electronic Engineering from Imperial College London.
+  Focused on diffusion models, visual localization, and privacy-preserving perception systems.
+
+experience:
+  - role: Scientist, AI Research
+    org: Meta
+    location: London
+    dates: Aug 2024 - Present
+    bullets:
+      - Image, video, and audio diffusion models to optimize ad performance across Meta platforms.
+      - Data curation pipelines from pretraining (millions of assets) to post-training (thousands of high-quality samples).
+      - Evaluation guidelines for generation quality, deployed at scale with annotators.
+      - Boosted advertiser adoption by 40% on a $1M+ daily revenue stream via image generation models.
+  - role: Research Engineer
+    org: Synthesia
+    location: London
+    dates: Feb 2023 - Aug 2024
+    bullets:
+      - Controllable video diffusion models for AI dubbing on avatars.
+      - End-to-end R&D and deployment of AvatarBuilder in Synthesia STUDIO.
+      - System design, engineering, and deployment for AI video generation at scale.
+  - role: Research Intern
+    org: Meta
+    location: London
+    dates: Jun 2022 - Oct 2022
+    bullets:
+      - Led a research agenda in SceneScript for multimodal text-to-3D understanding.
+      - Built an internal API and demo for a scene generation pipeline.
+  - role: Research Intern
+    org: Facebook (Reality Labs)
+    location: Redmond, WA
+    dates: May 2021 - Nov 2021
+    bullets:
+      - Led CVPR 2022 research on privacy-preserving ML using adversarial learning.
+      - Produced research code compatible with Meta infrastructure.
+  - role: Teaching Assistant
+    org: Imperial College London
+    location: London
+    dates: Oct 2018 - Aug 2023
+    bullets:
+      - "Courses: Machine Learning (Year 3), Pattern Recognition (Year 4), Deep Learning (Year 4)."
+      - Marking, feedback, and tutorials.
+  - role: Visiting Student
+    org: Scape Technologies
+    location: London
+    dates: Jun 2019 - Dec 2019
+    bullets:
+      - Job-shadowed Dr. Vassileios Balntas and team.
+      - Assisted integration of image retrieval modules into localization pipeline.
+  - role: Summer Intern
+    org: Rolls-Royce plc
+    location: Derby, UK
+    dates: Jun 2016 - Sep 2016
+    bullets:
+      - Managed a 7-person team to resolve a supply chain disruption (~GBP 120K impact).
+      - Analysed 650k+ entries to assess replacement risks and costs.
+
+education:
+  - degree: PhD, Electrical and Electronic Engineering
+    org: Imperial College London
+    dates: Sep 2018 - Aug 2023
+    details:
+      - "Research topic: Visual localization for AR/VR using deep learning and geometry."
+      - "Supervisor: Prof. Krystian Mikolajczyk, Co-supervisor: Dr. Vassileios Balntas."
+      - "Scholarship: Departmental Scholarship for Overseas PhD Candidates."
+  - degree: MEng, Aeronautical Engineering
+    org: Imperial College London
+    dates: Oct 2014 - Jun 2018
+    details:
+      - "Thesis: Prediction Model for Gravity Currents. Grade: 80/100."
+      - "Classification: First Class Honours (1:1), Average Score 78%."
+      - "Awards: Dean's List 2015 & 2016, Aeronautics Scholars."
+
+publications_highlights:
+  - "NinjaDesc: Content-Concealing Visual Descriptors via Adversarial Learning (CVPR 2022)."
+  - "OoD-Pose: Camera Pose Regression from Out-of-Distribution Synthetic Views (3DV 2022)."
+  - "SOLAR: Second-Order Loss and Attention for Image Retrieval (ECCV 2020)."
+  - "HyNet: Learning Local Descriptor with Hybrid Similarity Measure and Triplet Loss (NeurIPS 2020)."
+  - "D2D: Keypoint Extraction with Describe to Detect Approach (ACCV 2020)."
+
+service:
+  - role: Reviewer
+    org: CVPR 2023
+    details:
+      - Outstanding Reviewer.
+  - role: Reviewer
+    org: NeurIPS 2021 & 2022
+    details:
+      - Outstanding Reviewer Award (top 8% in 2021).
+  - role: Reviewer
+    org: CVPR 2022, CVPR 2025, ICLR 2022, ECCV 2022
+    details:
+      - Conference reviewer.
+  - role: Invited Speaker
+    org: Image Matching Challenge (CVPR 2020)
+    details:
+      - Lead presenter for a top entry in Local Features and Beyond.
+
+leadership:
+  - role: Leader / Arranger / Singer
+    org: The Mockingbird (Acapella group)
+    location: London
+    dates: Oct 2014 - Mar 2017
+    bullets:
+      - Founded by students and music enthusiasts from Hong Kong.
+      - Led concerts with hundreds of attendees; bass singer and song arranger.
+  - role: Associate
+    org: Imperial College Consultancy Society
+    location: London
+    dates: Oct 2016 - May 2017
+    bullets:
+      - Hosted and prepared materials for weekly case-study sessions.
+
+skills:
+  - group: Computing
+    items:
+      - "High: Python, PyTorch"
+      - "Medium: Docker, k8s / Kubeflow"
+      - "Basic: JavaScript, C++"
+  - group: Languages
+    items:
+      - "Native/Fluent: English, Cantonese, Mandarin"
+      - "Conversational: Korean, German (B1+)"
+      - "Basic: Japanese"
+  - group: Interests
+    items:
+      - Singing, travelling, lifting weights, tennis, Formula 1, Age of Empires II

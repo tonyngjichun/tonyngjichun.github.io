@@ -1,8 +1,22 @@
 ---
-layout: about
+layout: home
 title: about
 permalink: /
-description: PhD @ <a href="https://www.imperial.ac.uk/matchlab/">MatchLab, Imperial College London</a> | ex-<a href="https://about.facebook.com/realitylabs">Reality Labs, Meta</a> & Scape Technologies | HK, London
+description: Scientist at Meta AI Research. PhD at <a href="https://www.imperial.ac.uk/matchlab/">MatchLab, Imperial College London</a>. Ex-<a href="https://about.facebook.com/realitylabs">Reality Labs, Meta</a> & Scape Technologies.
+nav_order: 1
+
+hero:
+  kicker: Computer Vision + Generative AI
+  title: Tony Ng
+  subtitle: Scientist at Meta AI Research, building diffusion systems for image, video, and audio generation at scale.
+  ctas:
+    - label: View CV
+      url: /cv/
+      primary: true
+    - label: Publications
+      url: /publications/
+    - label: Play
+      url: /play/
 
 profile:
   align: right
@@ -13,7 +27,31 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-### about my research
-I'm 4-th year Ph.D. student at [MatchLab](https://www.imperial.ac.uk/matchlab/), Imperial College London. I am supervised by Prof. [Krystian Mikolajczyk](https://www.imperial.ac.uk/people/k.mikolajczyk) and co-supervised by Dr. [Vassileios Balntas](http://vbalnt.github.io/).
+<section class="home-section">
+  <h2>Research Focus</h2>
+  <div class="home-cards">
+    <div class="home-card">
+      <h3>Generative Systems</h3>
+      <p>Diffusion models for image, video, and audio generation with real-world quality and reliability constraints.</p>
+    </div>
+    <div class="home-card">
+      <h3>Visual Localization</h3>
+      <p>Learning-based localization that blends geometry with deep representations for AR/VR at scale.</p>
+    </div>
+    <div class="home-card">
+      <h3>Privacy + Security</h3>
+      <p>Content-concealing descriptors and robust perception for privacy-preserving visual systems.</p>
+    </div>
+  </div>
+</section>
 
-My research interests are Computer Vision, Deep Learning and 3D Geometry, specifically in combining them to solve the problem of [Visual Localization](https://www.visuallocalization.net/) for applications in Augmented Reality. My work include studies on Image Retrieval, Camera Pose Regression, Keypoints Detection & Description. Recently, I have started looking into the problem of privacy & security in computer vision, as well as multi-modal learning using language models (specifically auto-regressive Transformers).
+<section class="home-section">
+  <h2>Now</h2>
+  <p>
+    I build and evaluate diffusion systems for ad creatives at Meta AI Research. I’m interested in controllable generation,
+    scalable data curation, and evaluation frameworks that move beyond surface-level metrics.
+  </p>
+  <p>
+    I’m open to collaborations on generative media systems, privacy-preserving perception, and robust evaluation.
+  </p>
+</section>
