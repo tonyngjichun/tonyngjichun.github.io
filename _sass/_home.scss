@@ -133,19 +133,20 @@ html[data-theme='dark'] {
 @media (max-width: 768px) {
   .home {
     .home-hero {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr auto;
       padding: 2rem 1.5rem;
+      align-items: start;
     }
 
     .home-hero-media {
       display: flex;
-      justify-content: center;
-      width: 100%;
+      justify-content: flex-end;
+      width: auto;
     }
 
     .home-hero-image {
-      width: 100%;
-      max-width: 280px;
+      width: 110px;
+      max-width: 110px;
       height: auto;
     }
 

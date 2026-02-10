@@ -20,11 +20,11 @@ nav_order: 3
   </div>
   <div>
     <p><strong>Contact</strong></p>
-    <p>+44 7849 244 069</p>
-    <p>tonyngjichun@gmail.com</p>
-    <p>LinkedIn: tony-ng-b88b1512b</p>
-    <p>GitHub: tonyngjichun</p>
-    <p>Scholar: user=P4S4IokAAAAJ</p>
+    <p><a href="tel:+447849244069">+44 7849 244 069</a></p>
+    <p><a href="mailto:tonyngjichun@gmail.com">tonyngjichun@gmail.com</a></p>
+    <p><a href="https://www.linkedin.com/in/tony-ng-b88b1512b">LinkedIn</a></p>
+    <p><a href="https://github.com/tonyngjichun">GitHub</a></p>
+    <p><a href="https://scholar.google.com/citations?user=P4S4IokAAAAJ&hl=en">Google Scholar</a></p>
   </div>
 </section>
 
