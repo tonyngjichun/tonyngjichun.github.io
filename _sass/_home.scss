@@ -137,10 +137,27 @@ html[data-theme='dark'] {
       grid-template-rows: auto auto auto auto;
       padding: 2rem 1.5rem;
       align-items: start;
+      gap: 1.25rem;
     }
 
     .home-hero-text {
       display: contents;
+    }
+
+    .home-kicker {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+    }
+
+    .home-title {
+      font-size: 2.4rem;
+      line-height: 1.1;
+    }
+
+    .home-subtitle {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
     }
 
     .home-kicker,
@@ -154,13 +171,13 @@ html[data-theme='dark'] {
       justify-content: flex-end;
       width: auto;
       grid-column: 2;
-      grid-row: 4;
+      grid-row: 2 / span 2;
       align-self: start;
     }
 
     .home-hero-image {
-      width: 120px;
-      max-width: 120px;
+      width: min(45vw, 180px);
+      max-width: 180px;
       height: auto;
     }
 
