@@ -12,7 +12,7 @@
   Tony  Ng
 
 
-  | blog
+  | Wake Vortex
 
 </title>
 <meta name="description" content="Academic portfolio site of Tony Ng, computer vision researcher.
@@ -39,7 +39,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🆖</text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="https://tonyng.vision/blog/">
+<link rel="canonical" href="https://tonyng.vision/wake-vortex/">
 
 
 <!-- Dark Mode -->
@@ -175,8 +175,8 @@
           
           
           
-            <div class = "toggle-container">
-              <a id = "light-toggle">
+            <div class="toggle-container">
+              <a id="light-toggle">
                   <i class="fas fa-moon"></i>
                   <i class="fas fa-sun"></i>
               </a>
@@ -195,18 +195,39 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2>a simple whitespace theme for academics</h2>
+  <header class="post-header">
+    <h1 class="post-title">Wake Vortex</h1>
+    <p class="post-description">Sketch vortices and keep the paper plane stable through turbulent air.</p>
+  </header>
+
+  <article>
+    <section class="game-wrapper">
+  <h2>Wake Vortex</h2>
+  <p>
+    Drag to paint wake vortices. Move your mouse to guide the paper plane. Scroll adds more turbulence.
+  </p>
+  <canvas id="vortexCanvas" class="game-canvas" width="960" height="540"></canvas>
+  <div class="game-controls">
+    <div class="game-control">
+      <label for="turbulenceSlider">Turbulence</label>
+    </div>
+    <div class="game-control game-control-slider">
+      <input id="turbulenceSlider" class="game-slider" type="range" min="0" max="100" value="25">
+    </div>
+    <div class="game-control">
+      <span id="turbulenceValue">25%</span>
+    </div>
+    <div class="game-control game-control-upload">
+      <label for="planeColor">Plane color</label>
+      <input id="planeColor" type="color" value="#f6a149">
+    </div>
   </div>
+</section>
+
+<script src="/assets/js/wake_vortex.js"></script>
 
 
-  <ul class="post-list">
-    
-  </ul>
-
-  
-
+  </article>
 
 </div>
 
@@ -217,8 +238,8 @@
     
 <footer class="fixed-bottom">
   <div class="container mt-0">
-    &copy; Copyright 2026 Tony  Ng.
-    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+    © Copyright 2026 Tony  Ng.
+    Powered by <a href="http://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
 
     
     
