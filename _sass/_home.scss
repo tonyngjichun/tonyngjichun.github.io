@@ -160,10 +160,19 @@ html[data-theme='dark'] {
       margin-bottom: 1rem;
     }
 
-    .home-kicker,
-    .home-title,
+    .home-kicker {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .home-title {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
     .home-subtitle {
-      grid-column: 1 / -1;
+      grid-column: 1;
+      grid-row: 3;
     }
 
     .home-hero-media {
@@ -171,7 +180,7 @@ html[data-theme='dark'] {
       justify-content: flex-end;
       width: auto;
       grid-column: 2;
-      grid-row: 2 / span 2;
+      grid-row: 1 / span 3;
       align-self: start;
     }
 
@@ -182,10 +191,11 @@ html[data-theme='dark'] {
     }
 
     .home-cta {
-      grid-column: 1;
+      grid-column: 1 / -1;
       grid-row: 4;
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
     }
   }
 }
