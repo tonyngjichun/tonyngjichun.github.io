@@ -5,17 +5,15 @@ layout: default
 <div class="post home">
   <header class="post-header home-header">
     <div class="home-hero">
-      <div class="home-hero-text">
-        <p class="home-kicker">{{ page.hero.kicker }}</p>
-        <h1 class="home-title">{{ page.hero.title }}</h1>
-        <p class="home-subtitle">{{ page.hero.subtitle }}</p>
-        <div class="home-cta">
-          {% for cta in page.hero.ctas %}
-          <a class="home-cta-btn{% if cta.primary %} primary{% endif %}" href="{{ cta.url | relative_url }}">
-            {{ cta.label }}
-          </a>
-          {% endfor %}
-        </div>
+      <p class="home-kicker">{{ page.hero.kicker }}</p>
+      <h1 class="home-title">{{ page.hero.title }}</h1>
+      <p class="home-subtitle">{{ page.hero.subtitle }}</p>
+      <div class="home-cta">
+        {% for cta in page.hero.ctas %}
+        <a class="home-cta-btn{% if cta.primary %} primary{% endif %}" href="{{ cta.url | relative_url }}">
+          {{ cta.label }}
+        </a>
+        {% endfor %}
       </div>
       {% if page.profile %}
       <div class="home-hero-media">

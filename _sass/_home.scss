@@ -18,6 +18,19 @@
     padding: 2.5rem;
   }
 
+  .home-kicker,
+  .home-title,
+  .home-subtitle,
+  .home-cta {
+    grid-column: 1;
+  }
+
+  .home-hero-media {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    justify-self: end;
+  }
+
   .home-kicker {
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -138,10 +151,6 @@ html[data-theme='dark'] {
       padding: 2rem 1.5rem;
       align-items: start;
       gap: 1.25rem;
-    }
-
-    .home-hero-text {
-      display: contents;
     }
 
     .home-kicker {
