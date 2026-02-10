@@ -21,7 +21,7 @@ layout: default
       <div class="home-hero-media">
         {% if page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% include figure.html path=profile_image_path class="img-fluid home-hero-image" %}
+          <img class="img-fluid home-hero-image" src="{{ profile_image_path | relative_url }}" alt="{{ site.first_name }} {{ site.last_name }}">
         {% endif %}
       </div>
       {% endif %}
