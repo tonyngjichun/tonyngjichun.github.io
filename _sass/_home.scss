@@ -134,23 +134,39 @@ html[data-theme='dark'] {
   .home {
     .home-hero {
       grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto auto auto;
       padding: 2rem 1.5rem;
       align-items: start;
+    }
+
+    .home-hero-text {
+      display: contents;
+    }
+
+    .home-kicker,
+    .home-title,
+    .home-subtitle {
+      grid-column: 1 / -1;
     }
 
     .home-hero-media {
       display: flex;
       justify-content: flex-end;
       width: auto;
+      grid-column: 2;
+      grid-row: 4;
+      align-self: start;
     }
 
     .home-hero-image {
-      width: 110px;
-      max-width: 110px;
+      width: 120px;
+      max-width: 120px;
       height: auto;
     }
 
     .home-cta {
+      grid-column: 1;
+      grid-row: 4;
       flex-direction: column;
       align-items: flex-start;
     }
