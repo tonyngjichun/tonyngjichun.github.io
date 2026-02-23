@@ -1,6 +1,6 @@
 summary: >
-  Scientist at Meta AI Research with a PhD in Electrical and Electronic Engineering from Imperial College London.
-  Focused on diffusion models, visual localization, and privacy-preserving perception systems.
+  AI Research Scientist at Meta with a PhD in Electrical and Electronic Engineering from Imperial College London.
+  Focused on multimodal diffusion models and scalable post-training for high-quality generation.
 
 experience:
   - role: AI Research Scientist
@@ -8,10 +8,11 @@ experience:
     location: London
     dates: Aug 2024 - Present
     bullets:
-      - Image, video, and audio diffusion models to optimize ad performance across Meta platforms.
-      - Data curation pipelines from pretraining (millions of assets) to post-training (thousands of high-quality samples).
+      - Multimodal (text, image, video, audio) diffusion models to optimize ad performance across Meta platforms.
+      - Current focus on post-training (SFT, DPO, RL and distillation) to improve quality and speed.
+      - Data curation pipelines from pre and mid-training (millions of assets) to post-training (thousands of high-quality samples).
       - Evaluation guidelines for generation quality, deployed at scale with annotators.
-      - Boosted advertiser adoption by 40% on a $1M+ daily revenue stream via image generation models.
+      - Boosted advertiser adoption by 40% on a $1M+ daily revenue stream via controllable image generation models.
   - role: Research Engineer
     org: Synthesia
     location: London
@@ -73,6 +74,8 @@ education:
       - "Awards: Dean's List 2015 & 2016, Aeronautics Scholars."
 
 publications_highlights:
+  - "TUNA: Taming Unified Visual Representations for Native Unified Multimodal Models (CVPR 2026)."
+  - "VecGlypher: Unified Vector Glyph Generation with Language Models (CVPR 2026)."
   - "NinjaDesc: Content-Concealing Visual Descriptors via Adversarial Learning (CVPR 2022)."
   - "OoD-Pose: Camera Pose Regression from Out-of-Distribution Synthetic Views (3DV 2022)."
   - "SOLAR: Second-Order Loss and Attention for Image Retrieval (ECCV 2020)."
