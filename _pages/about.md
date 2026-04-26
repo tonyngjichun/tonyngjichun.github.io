@@ -20,7 +20,7 @@ hero:
 
 profile:
   align: right
-  image: gmfD0li0G0Y2CRPK.png
+  image: gmfD0li0G0Y2CRPK.jpg
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
