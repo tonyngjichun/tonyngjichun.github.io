@@ -1,12 +1,19 @@
 summary: >
-  AI Research Scientist at Meta with a PhD in Electrical and Electronic Engineering from Imperial College London.
-  Focused on multimodal diffusion models and scalable post-training for high-quality generation.
+  Senior Research Scientist at Google DeepMind with a PhD in Electrical and Electronic Engineering from Imperial College London.
+  Focused on generative AI, multimodal systems, and research translation at scale.
 
 experience:
+  - role: Senior Research Scientist
+    org: Google DeepMind
+    location: London
+    dates: Apr 2026 - Present
+    bullets:
+      - Senior Research Scientist on the Science and Strategic Initiatives team.
+      - Driving research programs in generative AI and multimodal systems.
   - role: AI Research Scientist
     org: Meta
     location: London
-    dates: Aug 2024 - Present
+    dates: Aug 2024 - Apr 2026
     bullets:
       - Multimodal (text, image, video, audio) diffusion models to optimize ad performance across Meta platforms.
       - Current focus on post-training (SFT, DPO, RL and distillation) to improve quality and speed.

@@ -2,13 +2,13 @@
 layout: home
 title: about
 permalink: /
-description: AI Research Scientist at Meta. PhD at <a href="https://www.imperial.ac.uk/matchlab/">MatchLab, Imperial College London</a>. Ex-Synthesia & Scape Technologies.
+description: Senior Research Scientist at Google DeepMind. PhD at <a href="https://www.imperial.ac.uk/matchlab/">MatchLab, Imperial College London</a>. Ex-Meta, Synthesia & Scape Technologies.
 nav_order: 1
 
 hero:
   kicker: Computer Vision + Generative AI
   title: Tony Ng
-  subtitle: AI Research Scientist at Meta, building diffusion systems for image, video, and audio generation at scale.
+  subtitle: Senior Research Scientist at Google DeepMind, working on generative AI and multimodal systems.
   ctas:
     - label: View CV
       url: /cv/
@@ -20,7 +20,7 @@ hero:
 
 profile:
   align: right
-  image: gmfD0li0G0Y2CRPK.png 
+  image: gmfD0li0G0Y2CRPK.png
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
@@ -48,10 +48,10 @@ social: true  # includes social icons at the bottom of the page
 <section class="home-section">
   <h2>Now</h2>
   <p>
-    I build and evaluate diffusion systems for ad creatives at Meta AI Research. I’m interested in controllable generation,
-    scalable data curation, and evaluation frameworks that move beyond surface-level metrics.
+    I am a Senior Research Scientist at Google DeepMind on the Science and Strategic Initiatives team. I am interested in
+    generative AI, multimodal systems, and evaluation frameworks that move beyond surface-level metrics.
   </p>
   <p>
-    I’m open to collaborations on generative media systems, privacy-preserving perception, and robust evaluation.
+    I am open to collaborations on generative media systems, privacy-preserving perception, and robust evaluation.
   </p>
 </section>
