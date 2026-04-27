@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <meta http-equiv="refresh" content="3; url=https://tonyng.vision/" />
+    
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@
   Tony  Ng
 
 
-  | Page not found
+  | Diffusion Toy
 
 </title>
 <meta name="description" content="Academic portfolio site of Tony Ng, computer vision researcher.
@@ -39,7 +39,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🆖</text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="https://tonyng.vision/404.html">
+<link rel="canonical" href="https://tonyng.vision/play/">
 
 
 <!-- Dark Mode -->
@@ -81,6 +81,8 @@
           </li>
           
           <!-- Other pages -->
+          
+          
           
           
           
@@ -194,12 +196,39 @@
       <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Page not found</h1>
-    <p class="post-description">Looks like there has been a mistake. Nothing exists here.</p>
+    <h1 class="post-title">Diffusion Toy</h1>
+    <p class="post-description">A playful diffusion-inspired canvas where you gradually clean the image with a denoising brush.</p>
   </header>
 
   <article>
-    <p>You will be redirected to the main page within 3 seconds. If not redirected, please click <a href="https://tonyng.vision/">here</a>.</p>
+    <section class="game-wrapper">
+  <h2>Diffusion Toy</h2>
+  <p>
+    Scroll to add noise. Click and hold to slowly clean areas and reveal the underlying image. Cleaned areas stay revealed as you work across the canvas.
+  </p>
+  <canvas id="diffusionCanvas" class="game-canvas" width="960" height="540"></canvas>
+  <div class="game-controls">
+    <div class="game-control">
+      <label for="noiseSlider">Noise level</label>
+    </div>
+    <div class="game-control game-control-slider">
+      <input id="noiseSlider" class="game-slider" type="range" min="0" max="100" value="35">
+    </div>
+    <div class="game-control">
+      <span id="noiseValue">35%</span>
+    </div>
+    <div class="game-control game-control-upload">
+      <label for="imageUpload">Upload image</label>
+      <input id="imageUpload" type="file" accept="image/*">
+    </div>
+    <div class="game-control">
+      <button id="resetNoise" type="button">Reset noise</button>
+    </div>
+  </div>
+</section>
+
+<script src="/assets/js/diffusion_game.js"></script>
+
 
   </article>
 
